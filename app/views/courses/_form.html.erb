@@ -1,0 +1,46 @@
+<%= form_with(model: course, local: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_field :name, placeholder: "Enter the course name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :price, placeholder: "Enter the course price", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :quantity, placeholder: "Enter the initial course quantity", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_area :description, placeholder: "Enter a description for the course", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_field :instructor, placeholder: "Enter the course's instructor name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.select :category_id, @categories.collect { |c| [ c.name, c.id ]}, {include_blank: "Please select a category" } %>
+  </div>
+
+  <div class="form-group">
+    <strong>Upload Course Image: </strong>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
