@@ -1,12 +1,19 @@
 <div class="row">
   <% @courses.each do |course| %>
     <div class="col-md-4">
-      <div class="well">
+      <div class="well shadow">
         <% if course.image.url.nil? == false %>
           <p><%= image_tag course.image.url, size: "40" %></p>
         <% end %>
         <h3><%= link_to course.name, course %></h3>
         <p><%= number_to_currency course.price %></p>
+        <p>
+          <%= form_tag add_to_cart_path do %>
+            <%= hidden_field_tag :course_id, course.id %>
+            <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
+            <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+          <% end %>
+          </p>
         <p>
           <a href="#" data-toggle="modal" data-target="#myModal_<%= course.id %>">
             <span class="glyphicon glyphicon-plus"></span> Quick Info

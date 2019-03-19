@@ -1,39 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <p class="panel-title">
+          <strong>Name:</strong>
+          <%= @course.name %>
+        </p>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Price:</strong>
+          <%= @course.price %>
+        </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @course.price %>
-</p>
+        <p>
+          <strong>Quantity:</strong>
+          <%= @course.quantity %>
+        </p>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @course.quantity %>
-</p>
+        <p>
+          <strong>Description:</strong>
+          <%= @course.description %>
+        </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+        <p>
+          <strong>Instructor:</strong>
+          <%= @course.instructor %>
+        </p>
 
-<p>
-  <strong>Instructor:</strong>
-  <%= @course.instructor %>
-</p>
+        <p>
+          <strong>Rating:</strong>
+          <%= @course.rating %>
+        </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @course.rating %>
-</p>
+        <p>
+          <strong>Category:</strong>
+          <%= @course.category_id %>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-warning" %> |
+        <%= link_to 'Back', courses_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @course.category_id %>
-</p>
 
-<%= link_to 'Edit', edit_course_path(@course), class: "btn btn-warning" %> |
-<%= link_to 'Back', courses_path, class: "btn btn-primary" %>
+
+
+
+

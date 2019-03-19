@@ -1,3 +1,35 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
  @import 'font-awesome';
+
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+p, div {
+    font-family: 'Merriweather', Helvetica, Arial, serif;
+}
+
+body { 
+  background: #466368;
+  background: radial-gradient(#FF495F, #0F5BFF);
+}
+
+h1 { 
+    text-shadow: 1px 1px 1px #ccc;
+}
+
+.shadow { 
+    box-shadow: 0 0 1em 1em #ccc;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    background-color: #FF9473;
+}
+
+.white {
+  color: #F1F1F1;
+}
+
+.myJumbotron {
+  background-color: #449D43;
+}
