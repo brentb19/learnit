@@ -1,6 +1,3 @@
-Category.destroy_all
-Course.destroy_all
-
 categories = Category.create([{name: "Web Development"}, {name: "WordPress"}, 
   {name: "Data"}, {name: "App Development"}, {name: "Photography"},
   {name: "Machine Learning"}, {name: "Other"}])
