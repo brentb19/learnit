@@ -35,23 +35,60 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_tag order_complete_path do %>
-      <article>
-        <label class="amount">
-          <span class="white"><%= number_to_currency @order.grand_total %></span>
-        </label>
-      </article>
-      <div>
-        <%= hidden_field_tag :order_id, @order.id %>
-      </div>
+<div class="wrapper">
+  <div class="checkout-container">
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="panel-footer">
+            <%= form_tag order_complete_path do %>
+              <section>
+                <label for="amount">
+                  <span class="input-label white">Amount</span>
+                  <div class="input-wrapper amount-wrapper">
+                    <input id="amount" type="tel" name="amount" value=<%= number_to_currency @order.grand_total %>>
+                  </div>
+                </label>
+                <div>
+                  <%= hidden_field_tag :order_id, @order.id %>
+                </div>
+                <div class="bt-drop-in-wrapper">
+                  <div id="bt-dropin"></div>
+                </div>
+              </section>
 
-      <script src="http://checkout.stripe.com/checkout.js"
-      class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-description="Order #<%= @order.id %>"
-      data-amount="<%= (@order.grand_total.to_f.round(2) * 100) %>"></script>
-    <% end %>
+              <input type="hidden" id="nonce" name="payment_method_nonce">
+              <button class="button btn btn-success" type="submit"><span>Pay</span></button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+      <script src="https://js.braintreegateway.com/web/dropin/1.16.0/js/dropin.min.js"></script>
+      <script>
+        var form = document.querySelector('#payment-form');
+        var client_token = "<%= @client_token %>";
+        braintree.dropin.create({
+          authorization: client_token,
+          container: '#bt-dropin',
+          paypal: {
+            flow: 'vault'
+          }
+        }, function (createErr, instance) {
+          form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            instance.requestPaymentMethod(function (err, payload) {
+              if (err) {
+                console.log('Error', err);
+                return;
+              }
+              // Add the nonce to the form and submit
+              document.querySelector('#nonce').value = payload.nonce;
+              form.submit();
+            });
+          });
+        });
+      </script>
+      <%= javascript_include_tag 'application', 'data-turbolinks-suppress-warning' => true, 'data-turbolinks-track' => true %>

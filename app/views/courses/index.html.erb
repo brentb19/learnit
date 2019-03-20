@@ -25,7 +25,7 @@
         <td><%= course.description %></td>
         <td><%= course.instructor %></td>
         <td><%= course.rating %></td>
-        <td><%= course.category_id %></td>
+        <td><%= course.category.name %></td>
         <td><%= link_to 'Show', course, class: "btn btn-info" %></td>
         <% if can? :update, course %>
           <td><%= link_to 'Edit', edit_course_path(course), class: "btn btn-warning" %></td>

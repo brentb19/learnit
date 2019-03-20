@@ -71,6 +71,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    braintree (2.94.0)
+      builder (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
     cancancan (2.3.0)
@@ -489,6 +491,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.1.0)
   bootstrap-sass
+  braintree
   byebug
   cancancan
   capybara (>= 2.15)

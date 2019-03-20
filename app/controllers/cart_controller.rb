@@ -48,20 +48,20 @@ class CartController < ApplicationController
     @order.line_items.destroy_all
     @amount = (@order.grand_total.to_f.round(2) * 100).to_i
 
-    customer = Stripe::Customer.create(
-      :email => current_user.email,
-      :card => params[:stripeToken]
-    )
+    # customer = Stripe::Customer.create(
+    #   :email => current_user.email,
+    #   :card => params[:stripeToken]
+    # )
 
-    charge = Stripe::Charge.create(
-      :customer => customer.id,
-      :amount => @amount,
-      :description => 'Rails Stripe customer',
-      :currency => 'usd'
-    )
+    # charge = Stripe::Charge.create(
+    #   :customer => customer.id,
+    #   :amount => @amount,
+    #   :description => 'Rails Stripe customer',
+    #   :currency => 'usd'
+    # )
 
-    rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to cart_path
+    # rescue Stripe::CardError => e
+    # flash[:error] = e.message
+    # redirect_to cart_path
   end
 end
