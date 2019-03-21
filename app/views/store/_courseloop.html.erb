@@ -3,7 +3,7 @@
     <div class="col-md-4">
       <div class="well shadow">
         <% if course.image.url.nil? == false %>
-          <p><%= image_tag course.image.url, size: "40" %></p>
+          <p><%= image_tag course.image.url, size: "100" %></p>
         <% end %>
         <h3><%= link_to course.name, course %></h3>
         <p><%= number_to_currency course.price %></p>
