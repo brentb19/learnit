@@ -16,7 +16,7 @@ gem 'cancancan'
 gem 'pry-rails'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'figaro'
-gem 'fog'
+gem 'fog-aws'
 gem 'rails_12factor'
 gem 'braintree'
 # Use Puma as the app server
