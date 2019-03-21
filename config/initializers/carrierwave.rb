@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
     :region                => "#{ENV['S3_REGION']}",
     :host                   => 'https://s3.amazonaws.com',                  # optional, defaults to nil
     :endpoint               => 'https://s3.amazonaws.com:8080'              # optional, defaults to nil
-    :path_style            => true
+    # :path_style            => true
   }
 
   config.fog_directory =  "#{ENV['S3_BUCKET_NAME']}"
